@@ -1,11 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Produto{% endblock %}
+{% block title %}Produtos{% endblock %}
 
 {% block content %}
-<h1>Produto</h1>
-<p>Seja bem vindo!</p>
-<ul>
-<li><a href="{{ url_for('index.formIndex') }}">Home</a></li>
-</ul>
+<form action="{{ url_for('produto.formProduto') }}" method="POST">
+    <h1>Produtos</h1>
+    <button type="submit" name="formNovo">Novo Produto</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Produto 1</td>
+            <td>Descrição do produto 1</td>
+            <td>R$ 10,00</td>
+            <td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i></td>
+        </tr>
+        <!-- Outras linhas de produtos aqui -->
+    </tbody>
+</table>
 {% endblock %}

@@ -4,15 +4,28 @@
 
 {% block menu %}
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><h2>Abc Bolinhas</h2></a>
+    <a class="navbar-brand" href="#">
+        <h2>Abc Bolinhas</h2>
+    </a>
 </nav>
 {% endblock %}
 
 {% block content %}
+
 <form action="{{ url_for('login.validaLogin') }}" method="post">
-    <input placeholder="CPF" name="usuario" type="text" value="abc">
-    <input placeholder="Senha" name="senha" type="password" value="bolinhas">
-    <br>
-    <input type="submit" value="Login">
+    <div class="mb-3">
+        <label class="form-label">Login</label>
+        <input type="text" class="form-control" placeholder="CPF" name="usuario" type="text" value="abc">
+        <div class="form-text">Compartilha seus dados que você se fode.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="Senha" name="senha" type="password" value="bolinhas">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input">
+        <label class="form-check-label">Me lembra depois, plis!</label>
+    </div>
+    <button type="submit" class="btn btn-primary" value="Login">Enviar</button>
 </form>
 {% endblock %}
