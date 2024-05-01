@@ -5,7 +5,7 @@
 {% block content %}
 <form action="{{ url_for('cliente.formCliente') }}" method="POST">
     <h1>Clientes</h1>
-    <button type="submit" name="formNovo">Novo Cliente</button>
+    <a href="{{ url_for('cliente.formCliente') }}" type="submit" name="formNovoCliente" class="btn btn-secondary mt-3">Novo Cliente</a>
 </form>
 
 <table>
@@ -33,4 +33,5 @@
         <!-- Outras linhas de clientes aqui -->
     </tbody>
 </table>
+<a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3">Voltar</a>
 {% endblock %}

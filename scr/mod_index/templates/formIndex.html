@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form index</title>
-</head>
+{% block title %}Home{% endblock %}
 
-<body>
+{% block menu %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h2>Abc Bolinhas</h2>
+        </a>
+    </div>
+</nav>
 
-    <h1>HOME</h1>
+<h1>Página inicial irmão!</h1>
 
-    <ul>
-        <li><a href="{{ url_for('index.formindex') }}">Home</a></li>
-        <li><a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionário</a></li>
-        <li><a href="{{ url_for('cliente.formListaCliente') }}">Cliente</a></li>
-        <li><a href="{{ url_for('produto.formListaProduto') }}">Produto</a></li>
+    <ul class="list-group">
+        <li class="list-group-item"><a href="{{ url_for('index.formIndex') }}">Home</a></li>
+        <li class="list-group-item"><a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionário</a></li>
+        <li class="list-group-item"><a href="{{ url_for('cliente.formListaCliente') }}">Cliente</a></li>
+        <li class="list-group-item"><a href="{{ url_for('produto.formListaProduto') }}">Produto</a></li>
     </ul>
-
-</body>
-
-</html>
+</div>
+{% endblock %}
