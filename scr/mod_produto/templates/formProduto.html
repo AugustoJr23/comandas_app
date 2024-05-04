@@ -3,22 +3,30 @@
 {% block title %}Produtos{% endblock %}
 
 {% block content %}
-<form name="formAdicionarProduto" id="formAdicionarProduto" action="" method="POST">
+<form name="formAdicionarProduto" id="formAdicionarProduto" action="" method="POST" class="row g-3 p-4">
     <h1>Produto</h1>
 
-    <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-    <label for="id">Código</label>
-    <br>
-    <input type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
-    <label for="nome">Nome Produto</label>
-    <br>
-    <input type="text" name="descricao" id="descricao" value="" placeholder="Descrição" required>
-    <label for="descricao">Descrição</label>
-    <br>
-    <input type="number" name="preco" id="preco" value="" placeholder="Preço" step="0.01" required>
-    <label for="preco">Preço</label>
-    <br>
-    <button type='submit' name='salvaProdutoDB' id='salvaProdutoDB'><i class='fas fa-save'></i> Salvar</button>
+    <div class="col-md-6">
+        <label for="id" class="form-label">Código</label>
+        <input type="text" class="form-control" id="id" value="" placeholder="Código" readonly>
+    </div>
+    <div class="col-md-6">
+        <label for="nome" class="form-label">Nome Produto</label>
+        <input type="text" class="form-control" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus
+            required>
+    </div>
+    <div class="col-md-12">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input type="text" class="form-control" id="descricao" value="" placeholder="Descrição" required>
+    </div>
+    <div class="col-md-6">
+        <label for="preco" class="form-label">Preço</label>
+        <input type="number" class="form-control" id="preco" value="" placeholder="Preço" step="0.01" required>
+    </div>
+    <div>
+        <button type='submit' name='salvaProdutoDB' id='salvaProdutoDB' class="btn btn-primary"><i
+                class='fas fa-save'></i> Salvar</button>
+    </div>
 </form>
-<a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3">Voltar</a>
+<a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3 col-md-12">Voltar</a>
 {% endblock %}

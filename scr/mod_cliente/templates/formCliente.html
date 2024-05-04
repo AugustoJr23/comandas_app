@@ -3,28 +3,56 @@
 {% block title %}Clientes{% endblock %}
 
 {% block content %}
-<form name="formAdicionarCliente" id="formAdicionarCliente" action="" method="POST">
-    <h1>Cliente</h1>
 
-    <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-    <label for="id">Código</label>
-    <br>
-    <input type="text" name="nome" id="nome" value="" placeholder="Nome Cliente" maxlength="100" autofocus required>
-    <label for="nome">Nome Cliente</label>
-    <br>
-    <input type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15" required>
-    <label for="cpf">CPF</label>
-    <br>
-    <input type="tel" name="telefone" id="telefone" value="" placeholder="Telefone" maxlength="15" required>
-    <label for="telefone" class="form-label">Telefone</label>
-    <br>
-    <input type="email" name="email" id="email" value="" placeholder="Email" required>
-    <label for="email">Email</label>
-    <br>
-    <input type="text" name="endereco" id="endereco" value="" placeholder="Endereço" required>
-    <label for="endereco">Endereço</label>
-    <br>
-    <button type='submit' name='salvaClienteDB' id='salvaClienteDB'><i class='fas fa-save'></i> Salvar</button>
+<h1>Cadastrar Cliente</h1>
+
+<form class="row g-3 p-4">
+    <div class="col-md-6">
+        <div>
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="email" class="form-control" id="inputNome" placeholder="Augusto Francisco Velho Lima Junior">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <label for="inputCpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="inputCpf" placeholder="000-000-000-00">
+        </div>
+    </div>
+    <div class="col-md-10">
+        <label for="inputAddress" class="form-label">Logradouro</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Rua Pastel com Coca">
+    </div>
+    <div class="col-md-2">
+        <label for="inputNumeroCasa" class="form-label">Número</label>
+        <input type="text" class="form-control" id="inputNumeroCasa" placeholder="nº 1234">
+    </div>
+    <div class="col-md-6">
+        <label for="inputComplemento" class="form-label">Complemento</label>
+        <input type="text" class="form-control" id="inputComplemento" placeholder="Casa dos fundos">
+    </div>
+    <div class="col-md-6">
+        <label for="inputBairro" class="form-label">Bairro</label>
+        <input type="text" class="form-control" id="inputNumeroCasa" placeholder="Guarujá">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="inputCity" placeholder="Lages">
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Estado</label>
+        <select id="inputState" class="form-select">
+            <option selected>Santa Catarina</option>
+            <option>...</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="inputCep" class="form-label">CEP</label>
+        <input type="text" class="form-control" id="inputCep" placeholder="00.000-000">
+    </div>
 </form>
-<a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3">Voltar</a>
+<div class="p-4">
+    <a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3 col-md-12">Salvar</a>
+</div>
+
 {% endblock %}

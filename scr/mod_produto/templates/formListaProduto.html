@@ -3,31 +3,35 @@
 {% block title %}Produtos{% endblock %}
 
 {% block content %}
-<form action="{{ url_for('produto.formProduto') }}" method="POST">
+<div class="container">
     <h1>Produtos</h1>
-    <a href="{{ url_for('produto.formProduto') }}" type="submit" name="formNovoProduto" class="btn btn-secondary mt-3">Novo Produto</a>
-</form>
+    <form action="{{ url_for('produto.formProduto') }}" method="POST">
+        <a href="{{ url_for('produto.formProduto') }}" type="submit" name="formNovoProduto"
+            class="btn btn-secondary mt-3">Novo Produto</a>
+    </form>
 
-<table>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Produto 1</td>
-            <td>Descrição do produto 1</td>
-            <td>R$ 10,00</td>
-            <td><i class="fas fa-edit"></i> <i class="fas fa-trash"></i></td>
-        </tr>
-        <!-- Outras linhas de produtos aqui -->
-    </tbody>
-</table>
-<a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3">Voltar</a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Produto 1</td>
+                    <td>Descrição do produto 1</td>
+                    <td>R$ 10,00</td>
+                    <td><i class="fas fa-edit" style="margin-right: 18px;"></i><i class="fas fa-trash"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ url_for('index.formIndex') }}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
 {% endblock %}
