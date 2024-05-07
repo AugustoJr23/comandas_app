@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, session
 from settings import HOST, PORT, DEBUG
+import os
 
 #from flask import Flask, render_template
 # import blueprint criado
@@ -12,22 +13,23 @@ from mod_erro.erro import bp_erro
 
 app = Flask(__name__)
 
-#''' chamadas dos formulários '''
-#@app.route('/')
-#def formIndex():
-#    return "<h1>Rota da página inicial da nossa WEB APP</h1>", 200
+# gerando uma chave randômica para secret_key
+app.secret_key = os.urandom(12).hex()
 
-#@app.route('/funcionario/')
-#def formListaFuncionario():
-#    return render_template('formListaFuncionario.html'), 200
-
-#@app.route('/cliente/')
-#def formListaCliente():
-#    return render_template('formListaCliente.html'), 200
-
-#@app.route('/produto/')
-#def formListaProduto():
-#    return render_template('formListaProduto.html'), 200
+# ajuste SAMESITE
+'''
+O cookie "session" não tem o atributo "SameSite" com valor válido.
+Em breve, cookies sem o atributo "SameSite" ou com valor inválido serão tratados como "Lax".
+Significa que o cookie não será mais enviado em contextos de terceiros.
+Se sua aplicação depender da disponibilidade deste cookie em tais contextos, adicione o
+atributo "SameSite=None".
+Saiba mais sobre o atributo "SameSite" em
+https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite
+'''
+app.config.update(
+    SESSION_COOKIE_SAMESITE='None',
+    SESSION_COOKIE_SECURE='True'
+)
 
 # registro das rotas do blueprint
 app.register_blueprint(bp_index)
