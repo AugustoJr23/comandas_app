@@ -13,11 +13,19 @@
 
 <h1>Página inicial irmão!</h1>
 
-    <ul class="list-group">
-        <li class="list-group-item"><a href="{{ url_for('index.formIndex') }}">Home</a></li>
-        <li class="list-group-item"><a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionário</a></li>
-        <li class="list-group-item"><a href="{{ url_for('cliente.formListaCliente') }}">Cliente</a></li>
-        <li class="list-group-item"><a href="{{ url_for('produto.formListaProduto') }}">Produto</a></li>
-    </ul>
+<ul class="list-group">
+    <li class="list-group-item"><a href="{{ url_for('index.formIndex') }}">Home</a></li>
+    <li class="list-group-item"><a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionário</a></li>
+    <li class="list-group-item"><a href="{{ url_for('cliente.formListaCliente') }}">Cliente</a></li>
+    <li class="list-group-item"><a href="{{ url_for('produto.formListaProduto') }}">Produto</a></li>
+</ul>
+
+{% if 'login' in session %}
+{{ session['nome'] }}, grupo {{ session['grupo'] }}<br>
+{{ session['token_type'] }}, {{ session['token_validade'] }}<br>
+Token: {{ session['access_token'] }}
+{% endif %}
+
 </div>
+
 {% endblock %}

@@ -9,6 +9,18 @@ bp_login = Blueprint('login', __name__, url_prefix='/', template_folder='templat
 def login():
     return render_template("formLogin.html")
 
+@bp_login.route("/logoff", methods=['GET'])
+def logoff():
+
+    # limpa um valor individual
+    session.pop('login', None)
+
+    # limpa toda sessão
+    session.clear()
+    
+    # retorna para a tela de login
+    return redirect(url_for('login.login'))
+
 @bp_login.route('/login', methods=['POST'])
 def validaLogin():
     try:
