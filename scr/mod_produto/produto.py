@@ -11,6 +11,7 @@ def formProduto():
     return render_template('formProduto.html')
 
 @bp_produto.route('/', methods=['GET', 'POST'])
+#@validaToken
 def formListaProduto():
     try:
         response = requests.get(ENDPOINT_PRODUTO, headers=getHeadersAPI())
