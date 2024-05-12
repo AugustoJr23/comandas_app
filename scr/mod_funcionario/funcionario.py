@@ -1,24 +1,22 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import requests
-from mod_login.login import validaToken
+#from mod_login.login import validaToken
 from settings import getHeadersAPI, ENDPOINT_FUNCIONARIO
+
 bp_funcionario = Blueprint('funcionario', __name__, url_prefix="/funcionario", template_folder='templates')
 
 ''' rotas dos formulários '''
 
-@bp_funcionario.route('/', methods=['GET', 'POST'])
-def formListaFuncionario():
-    return render_template('formListaFuncionario.html')
 
 @bp_funcionario.route('/formFuncionario/', methods=['GET'])
 def formFuncionario():
     return render_template('formFuncionario.html')
 
 @bp_funcionario.route('/', methods=['GET', 'POST'])
-@validaToken
+#@validaToken
 def formListaFuncionario():
     try:
-        response = requests.get(ENDPOINT_FUNCIONARIO)
+        response = requests.get(ENDPOINT_FUNCIONARIO, headers=getHeadersAPI())
         result = response.json()
 
         print(result) # para teste
