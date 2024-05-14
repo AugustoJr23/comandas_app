@@ -19,8 +19,8 @@ def formListaCliente():
 
         print(result) # para teste
         print(response.status_code) # para teste
-        if (response.status_code != 200):
 
+        if (response.status_code != 200):
             raise Exception(result)
         
         return render_template('formListaCliente.html', result=result[0])
