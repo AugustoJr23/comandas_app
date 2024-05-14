@@ -20,7 +20,6 @@ def formListaProduto():
         print(result) # para teste
         print(response.status_code) # para teste
         if (response.status_code != 200):
-
             raise Exception(result)
         
         return render_template('formListaProduto.html', result=result[0])
