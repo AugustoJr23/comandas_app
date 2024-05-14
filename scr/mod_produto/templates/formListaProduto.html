@@ -22,13 +22,17 @@
                 </tr>
             </thead>
             <tbody>
+                {% if result %}
+                {% for row in result %}
                 <tr>
                     <th scope="row">1</th>
-                    <td>Produto 1</td>
-                    <td>Descrição do produto 1</td>
-                    <td>R$ 10,00</td>
+                    <td>{{ row['nome'] }}</td>
+                    <td>{{ row['descricao'] }}</td>
+                    <td>{{ row['valor_unitario'] }}</td>
                     <td><i class="fas fa-edit" style="margin-right: 18px;"></i><i class="fas fa-trash"></i></td>
                 </tr>
+                {% endfor %}
+                {% endif %}
             </tbody>
         </table>
     </div>

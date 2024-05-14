@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import requests
 #from mod_login.login import validaToken
 from settings import getHeadersAPI, ENDPOINT_PRODUTO
