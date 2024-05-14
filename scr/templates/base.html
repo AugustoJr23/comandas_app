@@ -8,6 +8,7 @@
   {% block style %}{% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.5.2-web/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='sweetalert2/-dist/sweetalert2.min.css') }}">
 
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
@@ -85,23 +86,33 @@
 
   {% endblock %}
 
-  {% if request.args.get('msg'): %}
-
+<!-- redirect - request.args.get('msg' ou 'msgErro') -->
+{% if request.args.get('msg'): %}
   <h3>{{ request.args.get('msg') }}</h3><br>
+  <script>
+    Swal.fire("Sucesso", "{{ request.args.get('msg') }}", "success");
+  </script>
 
-  {% elif msg: %}
-
-  <h3>{{ msg }}</h3><br>
-
-  {% elif request.args.get('msgErro'): %}
-
+{% elif request.args.get('msgErro'): %}
   <h3>{{ request.args.get('msgErro') }}</h3><br>
+  <script>
+    Swal.fire("Erro", "{{ request.args.get('msgErro') }}", "error");
+  </script>
 
-  {% elif msgErro: %}
+<!-- render_template - msg ou msgErro -->
+{% elif msg: %}
+  <h3>{{ msg }}</h3><br>
+  <script>
+    Swal.fire("ID {{ msg.id }}, {{ msg.msg }} ", "{{ msg }}", "success");
+  </script>
 
+{% elif msgErro: %}
   <h3>{{ msgErro }}</h3><br>
+  <script>
+    Swal.fire("{{ msgErro.msg if msgErro.msg else 'Erro' }}", "{{ msgErro }}", "error");
+  </script>
 
-  {% endif %}
+{% endif %}
 
   <div class="container-fluid mt-3">
     {% block content %}{% endblock %}
@@ -119,6 +130,7 @@
   <script src="{{ url_for('static', filename='bootstrap-5.3.3-dist/js/popper.min.js') }}"></script>
   <script src="{{ url_for('static', filename='bootstrap-5.3.3-dist/js/bootstrap.min.js') }}"></script>
   <script src="{{ url_for('static', filename='fontawesome-free-6.5.2-web/js/all.js') }}"></script>
+  <script src="{{ url_for('static', filename='sweetalert2/-dist/sweetalert2.all.min.js') }}"></script>
 </body>
 
 </html>
