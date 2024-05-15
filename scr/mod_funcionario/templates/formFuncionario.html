@@ -2,9 +2,19 @@
 
 {% block title %}Funcionário{% endblock %}
 
+{# ajusta a variáveis conforme novo ou edit #}
+{% set id = result[0].id_funcionario if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set matricula = result[0].matricula if result else '' %}
+{% set cpf = result[0].cpf if result else '' %}
+{% set telefone = result[0].telefone if result else '' %}
+{% set grupo = result[0].grupo if result else '' %}
+{% set senha = result[0].senha if result else '' %}
+
 {% block content %}
-<form name="formAdicionar" id="formAdicionar" action="" method="POST" class="row g-3 p-4">
-    <h1>Cadastrar Funcionário</h1>
+<h3 class="d-flex justify-content-center mb-5">Funcionário - {{ "%s: %s" % ('Editar Registro', id) if result else 'Novo' }}</h3>
+<form name="{{ 'formEditar' if result else 'formAdicionar' }}" id="{{ 'formEditar' if result else 'formAdicionar' }}"
+    class="row g-3 p-4" action="{{ url_for('funcionario.edit') if result else url_for('funcionario.insert') }}" method="POST">
 
     <div class="col-md-2">
         <img style="width: 154px; height: 164px;" src="../../static/Monster404Error.png">
@@ -12,56 +22,58 @@
     <div class="col-md-4">
         <div style="margin-top: 100px;">
             <label for="id" class="form-label">Código</label>
-            <input type="text" class="form-control" id="id" value="" placeholder="Código" readonly>
+            <input type="text" class="form-control" name="id" id="id" value="{{ id }}" placeholder="0" readonly>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 100px;">
             <label for="nome" class="form-label">Nome Funcionário</label>
-            <input type="text" class="form-control" id="nome" value="" placeholder="Nome Funcionário" maxlength="100"
-                autofocus required>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ nome }}" placeholder="Nome Funcionário"
+                maxlength="100" autofocus required>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="matricula" class="form-label">Matrícula</label>
-            <input type="text" class="form-control" id="matricula" value="" placeholder="Matrícula" maxlength="15"
-                required>
+            <input type="text" class="form-control" id="matricula" name="matricula" value="{{ matricula }}" placeholder="Matrícula"
+                maxlength="15" required>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="cpf" class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf" value="" placeholder="CPF" maxlength="15" required>
+            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ cpf }}" placeholder="CPF" maxlength="15"
+                required>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="telefone" class="form-label">Telefone</label>
-            <input type="tel" class="form-control" id="telefone" value="" placeholder="Telefone" maxlength="15"
-                required>
+            <input type="tel" class="form-control" id="telefone" name="telefone" value="{{ telefone }}" placeholder="Telefone"
+                maxlength="15" required>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="grupo" class="form-label">Grupo</label>
             <select name="grupo" id="grupo" class="form-select" aria-label="Grupo">
-                <option value="0">Atendente</option>
-                <option value="1">Caixa</option>
-                <option value="2">Adm</option>
+                <option value="0" {{ 'selected' if grupo == 0 else '' }}>Atendente</option>
+                <option value="1" {{ 'selected' if grupo == 1 else '' }}>Caixa</option>
+                <option value="2" {{ 'selected' if grupo == 2 else '' }}>Adm</option>
             </select>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" value="Bolinhas" placeholder="Senha" required>
+            <input type="password" class="form-control" id="senha" name="senha" value="{{ senha }}" placeholder="Senha"
+                required>
         </div>
     </div>
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="resenha" class="form-label">reSenha</label>
-            <input type="password" class="form-control" id="resenha" value="Bolinhas" placeholder="Senha" required>
+            <input type="password" class="form-control" id="resenha" value="{{ senha }}" placeholder="Senha" required>
         </div>
     </div>
     <div class="col-md-6">
