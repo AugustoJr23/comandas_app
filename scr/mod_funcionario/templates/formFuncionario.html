@@ -14,7 +14,7 @@
 {% block content %}
 <h3 class="d-flex justify-content-center mb-5">Funcionário - {{ "%s: %s" % ('Editar Registro', id) if result else 'Novo' }}</h3>
 <form name="{{ 'formEditar' if result else 'formAdicionar' }}" id="{{ 'formEditar' if result else 'formAdicionar' }}"
-    class="row g-3 p-4" action="{{ url_for('funcionario.edit') if result else url_for('funcionario.insert') }}" method="POST">
+    class="row g-3 p-4 was-validated" action="{{ url_for('funcionario.edit') if result else url_for('funcionario.insert') }}" method="POST">
 
     <div class="col-md-2">
         <img style="width: 154px; height: 164px;" src="../../static/Monster404Error.png">
@@ -22,7 +22,7 @@
     <div class="col-md-4">
         <div style="margin-top: 100px;">
             <label for="id" class="form-label">Código</label>
-            <input type="text" class="form-control" name="id" id="id" value="{{ id }}" placeholder="0" readonly>
+            <input type="text" class="form-control" name="id" id="id" value="{{ id }}" placeholder="Código" readonly>
         </div>
     </div>
     <div class="col-md-6">
@@ -73,7 +73,7 @@
     <div class="col-md-6">
         <div style="margin-top: 20px;">
             <label for="resenha" class="form-label">reSenha</label>
-            <input type="password" class="form-control" id="resenha" value="{{ senha }}" placeholder="Senha" required>
+            <input type="password" class="form-control" id="resenha" name="resenha" value="{{ senha }}" placeholder="Senha" required>
         </div>
     </div>
     <div class="col-md-6">
