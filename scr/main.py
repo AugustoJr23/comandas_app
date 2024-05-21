@@ -1,6 +1,7 @@
 from flask import Flask, session
-from settings import HOST, PORT, DEBUG
+from settings import HOST, PORT, DEBUG, TEMPO_SESSION
 import os
+from datetime import timedelta
 
 #from flask import Flask, render_template
 # import blueprint criado
@@ -30,6 +31,14 @@ app.config.update(
     SESSION_COOKIE_SAMESITE='None',
     SESSION_COOKIE_SECURE='True'
 )
+
+# método para renovar o tempo da sessão
+@app.before_request
+def before_request():
+    session.permanent = True
+    session['tempo'] = int(TEMPO_SESSION)
+    # o padrão é 31 dias...
+    app.permanent_session_lifetime = timedelta(minutes=session['tempo'])
 
 # registro das rotas do blueprint
 app.register_blueprint(bp_index)
