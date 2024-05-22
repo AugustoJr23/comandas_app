@@ -1,7 +1,7 @@
 from flask import Flask, session
-from settings import HOST, PORT, DEBUG, TEMPO_SESSION
 import os
 from datetime import timedelta
+from settings import HOST, PORT, DEBUG, TEMPO_SESSION
 
 #from flask import Flask, render_template
 # import blueprint criado

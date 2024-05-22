@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import requests
 from funcoes import Funcoes
-#from mod_login.login import validaToken
 from settings import getHeadersAPI, ENDPOINT_FUNCIONARIO
 from mod_login.login import validaToken
 
